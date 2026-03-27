@@ -6,5 +6,10 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.helm" },
+  { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.spring-boot" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   -- import/override with your plugins folder
 }
