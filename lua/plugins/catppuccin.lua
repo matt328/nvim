@@ -1,3 +1,13 @@
+-- return {
+-- 	"catppuccin/nvim",
+-- }
+
+-- return {
+-- 	"shaunsingh/nord.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- }
+--
 return {
-  "catppuccin/nvim",
+	"rmehri01/onenord.nvim",
 }
