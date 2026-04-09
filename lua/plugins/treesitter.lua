@@ -8,7 +8,6 @@ return {
       "lua",
       "vim",
       "rust",
-      -- add more arguments for adding more treesitter parsers
     },
   },
 }
