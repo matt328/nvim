@@ -1,6 +1,7 @@
 return {
   "nvim-neotest/neotest",
   dependencies = {
+    "rouge8/neotest-rust",
     "nvim-neotest/nvim-nio",
     "andythigpen/nvim-coverage",
     "mrcjkb/rustaceanvim",
