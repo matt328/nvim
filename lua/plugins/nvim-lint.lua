@@ -9,11 +9,17 @@ return {
       tf = { "tflint" },
     }
 
-    -- Create an autocmd to trigger linting on save
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
       group = lint_augroup,
-      callback = function() lint.try_lint() end,
+      callback = function()
+        -- Get the current buffer type
+        local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+
+        -- Only run linter if the buffer is NOT a terminal
+        if buftype ~= "terminal" then lint.try_lint() end
+      end,
     })
   end,
 }
