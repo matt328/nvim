@@ -129,24 +129,31 @@ return {
           end,
           desc = "Debug Game executable",
         },
-        ["<leader>ct"] = {
-          "<cmd>CoverageToggle<cr>",
-          desc = "Toggle Coverage Display",
-        },
-
-        -- Run Coverage for entire project
-        ["<leader>cC"] = {
-          function() run_coverage "" end,
-          desc = "Run Coverage (Project)",
-        },
-
-        -- Run Coverage for current file
-        ["<leader>cf"] = {
+        ["<Leader>rp"] = {
           function()
-            local file = vim.fn.expand "%:p" -- Get current file path
-            run_coverage("-- " .. file)
+            local overseer = require "overseer"
+            overseer.run_task {}
           end,
-          desc = "Run Coverage (File)",
+          desc = "Pick Task",
+        },
+        ["<Leader>rt"] = {
+          function()
+            local overseer = require "overseer"
+            overseer.toggle {}
+          end,
+          desc = "Toggle Overseer UI",
+        },
+        ["<Leader>rl"] = {
+          function()
+            local overseer = require "overseer"
+            local tasks = overseer.list_tasks {}
+            if #tasks == 0 then
+              overseer.run_task {}
+            else
+              tasks[1]:restart()
+            end
+          end,
+          desc = "Run last task",
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed

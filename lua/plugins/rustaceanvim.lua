@@ -9,6 +9,15 @@ return {
       local astrolsp_opts = (astrolsp_avail and astrolsp.lsp_opts "rust_analyzer") or {}
 
       local server = {
+        on_attach = function(client, bufnr)
+          if astrolsp_avail then astrolsp.on_attach(client, bufnr) end
+          vim.keymap.set(
+            "n",
+            "<leader>lR",
+            function() require("snacks").picker.lsp_references() end,
+            { buffer = bufnr, desc = "Search References", silent = true }
+          )
+        end,
         ---@type table | (fun(project_root:string|nil, default_settings: table|nil):table)
         settings = function(project_root, default_settings)
           local astrolsp_settings = astrolsp_opts.settings or {}
