@@ -8,6 +8,9 @@ return {
       "lua",
       "vim",
       "rust",
+      "typescript",
+      "javascript",
+      "json",
     },
   },
 }
