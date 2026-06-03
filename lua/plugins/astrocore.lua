@@ -155,6 +155,10 @@ return {
           end,
           desc = "Run last task",
         },
+        ["<leader>fS"] = {
+          function() require("snacks").picker.lsp_workspace_symbols() end,
+          desc = "Find workspace symbols",
+        },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
