@@ -68,6 +68,8 @@ return {
       -- see `:h vim.filetype.add` for usage
       extension = {
         foo = "fooscript",
+        mesh = "glsl", -- mesh shaders (GL_EXT_mesh_shader)
+        task = "glsl", -- task shaders; override Neovim's default taskedit mapping
       },
       filename = {
         [".foorc"] = "fooscript",

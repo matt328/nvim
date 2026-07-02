@@ -11,6 +11,7 @@ return {
       "typescript",
       "javascript",
       "json",
+      "glsl",
     },
   },
 }
