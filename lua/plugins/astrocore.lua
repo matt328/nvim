@@ -2,30 +2,6 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
-local function run_coverage(args)
-  -- 1. Notify you that it's started
-  vim.notify("Generating coverage...", vim.log.levels.INFO)
-
-  -- 2. Construct the command (you can pass args like a file filter here)
-  local cmd = "cargo llvm-cov --lcov --output-path lcov.info " .. (args or "")
-
-  -- 3. Run in background, then update UI
-  vim.fn.jobstart(cmd, {
-    on_exit = function(_, code)
-      if code == 0 then
-        vim.schedule(function()
-          -- Reload the newly generated file
-          require("coverage").load_lcov(vim.fn.getcwd() .. "/lcov.info", true)
-          require("coverage").show()
-          vim.notify("Coverage generated!", vim.log.levels.INFO)
-        end)
-      else
-        vim.notify("Coverage generation failed!", vim.log.levels.ERROR)
-      end
-    end,
-  })
-end
-
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
