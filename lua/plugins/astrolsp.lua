@@ -44,6 +44,32 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      slangd = {
+        settings = {
+          slang = {
+            -- Searched first for `import`/`#include`, so `import forward;`
+            -- resolves the shared module at game/assets/lib/forward.slang.
+            -- Relative to slangd's workspace root (the repo root); check with
+            -- :LspInfo if imports still fail to resolve.
+            additionalSearchPaths = { "game/assets/lib" },
+            -- The extension defaults this true, but that default is applied by
+            -- the extension, not the server, so neovim must set it explicitly.
+            -- Falls back to scanning the whole workspace when a module is not
+            -- found in additionalSearchPaths.
+            searchInAllWorkspaceDirectories = true,
+            -- slangd's document formatting shells out to a clang-format
+            -- executable; with none on PATH it silently returns no edits (so
+            -- <leader>lf appears to do nothing). Point it at the clang-format
+            -- bundled with mason's cpptools package. `format` style keys fall
+            -- back to Microsoft/Allman/ColumnLimit-0 when no .clang-format is
+            -- found in the workspace.
+            format = {
+              clangFormatLocation = vim.fn.stdpath "data"
+                .. "/mason/packages/cpptools/extension/LLVM/bin/clang-format",
+            },
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
