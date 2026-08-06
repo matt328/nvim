@@ -34,20 +34,8 @@ return {
         },
       }
 
-      dap.configurations.rust = {
-        {
-          name = "Game",
-          type = "codelldb",
-          request = "launch",
-          program = vim.fn.getcwd() .. "/target/debug/game",
-          args = { "--asset-root", "/home/matt/Projects/catalog/" },
-          cwd = "${workspaceFolder}",
-          stopOnEntry = false,
-          showDisassembly = "never",
-          sourceLanguages = { "rust" },
-          expressions = "native",
-        },
-      }
+      -- Project-specific debug configurations live in .vscode/launch.json
+      -- and are loaded automatically by nvim-dap's built-in provider.
 
       -- Auto open the debug ui
       dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end

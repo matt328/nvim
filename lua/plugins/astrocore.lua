@@ -97,15 +97,8 @@ return {
           desc = "Close buffer from tabline",
         },
         ["<Leader>dg"] = {
-          function()
-            local dap = require "dap"
-            if dap.configurations.rust and dap.configurations.rust[1] then
-              dap.run(dap.configurations.rust[1])
-            else
-              print "No Rust debug configurations found!"
-            end
-          end,
-          desc = "Debug Game executable",
+          function() require("dap").continue() end,
+          desc = "Debug: Launch or continue",
         },
         ["<Leader>rp"] = {
           function()
