@@ -77,6 +77,13 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
+        ["<Leader>C"] = { desc = "󰚩 CodeCompanion" },
+        ["<Leader>Cc"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle chat" },
+        ["<Leader>Cn"] = { "<cmd>CodeCompanionChat<cr>", desc = "New chat" },
+        ["<Leader>Ca"] = { "<cmd>CodeCompanionActions<cr>", desc = "Actions palette" },
+        ["<Leader>Ci"] = { "<cmd>CodeCompanion<cr>", desc = "Inline prompt" },
+        ["<Leader>Cx"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "Add to chat" },
+
         -- navigate buffer tabs
         ["<Tab>"] = {
           function() require("astrocore.buffer").nav(vim.v.count1) end,
@@ -137,6 +144,11 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+      },
+      v = {
+        ["<Leader>Ca"] = { "<cmd>CodeCompanionActions<cr>", desc = "Actions palette" },
+        ["<Leader>Cx"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "Add selection to chat" },
+        ["<Leader>Ci"] = { "<cmd>CodeCompanion<cr>", desc = "Inline prompt (selection)" },
       },
     },
   },

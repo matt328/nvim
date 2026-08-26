@@ -31,7 +31,10 @@ return {
           })
         end,
       }
-      return { server = require("astrocore").extend_tbl(astrolsp_opts, server) }
+      return {
+        server = require("astrocore").extend_tbl(astrolsp_opts, server),
+        tools = { enable_clippy = true },
+      }
     end,
 
     config = function(_, opts) vim.g.rustaceanvim = require("astrocore").extend_tbl(opts, vim.g.rustaceanvim) end,
